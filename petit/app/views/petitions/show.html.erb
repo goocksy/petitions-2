@@ -1,0 +1,8 @@
+<H1>Петиция # <%= @petition.id %></H1>
+
+<h2><%= @petition.title %></h2>
+<%= @petition.description %>
+<hr>
+<h3>Информация об авторе</h3>
+ФИО: <b><%= @petition.author_surname %> <%= @petition.author_name %> <%= @petition.author_patronymic %> </b><br>
+Возраст: <b><%= @petition.author_age %></b>

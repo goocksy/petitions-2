@@ -1,0 +1,35 @@
+<h1>Users#new</h1>
+
+<%= form_for @user do |f| %>
+
+	<div>
+		<%= f.label  :email , 'Почта'%><br>
+		<%= f.text_field :email %>
+	</div>
+	<div>
+		<%= f.label :surname, 'Фамилия'%><br>
+		<%= f.text_field :surname %>
+	</div>
+	<div>
+		<%= f.label :name , 'Имя'%><br>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.label :patronymic, 'Отчество' %><br>
+		<%= f.text_field :patronymic %>
+	</div>
+	<div>
+		<%= f.label :age , "Возраст" %><br>
+		<%= f.text_field :age %>
+	</div>
+
+	<div>
+		<%= f.label  :password , 'Пароль'%><br>
+		<%= f.password_field :password %>
+	</div>
+	<div>
+		<%= f.label :password_confirmation, 'Подтвердите пароль'%><br>
+		<%= f.password_field :password_confirmation %>
+	</div>
+	<%= f.submit "Зарегестрироваться" %>
+	<% end %>

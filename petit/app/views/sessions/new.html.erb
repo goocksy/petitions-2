@@ -1,0 +1,16 @@
+<h1>Sessions#new</h1>
+
+<%= form_tag sessions_path do %>
+	<div>
+		<%= label_tag 'email', 'Почта' %> <br>
+		<%= text_field_tag 'email' %>
+	</div>
+	<div>
+		<%= label_tag 'password', 'Пароль' %> <br>
+		<%= password_field_tag 'password' %>
+	</div>
+	<%= submit_tag 'Войти!' %>
+
+<% end %>
+
+

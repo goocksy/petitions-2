@@ -1,0 +1,42 @@
+<h1> Welcome#index </h1>
+<div>
+<% if current_user.present? %>
+	 Добро пожаловать  
+	 <b>
+	 <%=current_user.surname %>
+	 <%= current_user.name %>
+	 <%=current_user.patronymic  %>
+	 </b>
+	 !<br>
+	 <%= link_to 'Выйти', logout_path %>
+<% else %>
+	<%= link_to 'Зарегистрироваться', new_user_path %>
+	<%= link_to 'Войти', login_path %>
+<% end %>
+</div>
+
+<!--
+<div>
+<ul>
+	<% @users.each do |user| %>
+		<li> <%= user.email %></li>
+	<% end %>
+</ul>
+</div>
+-->
+
+<div>
+	<ul>
+		<% @petitions.each do |petition| %>
+		<li> 
+			<%= link_to petition.title, petition_path(petition) %> ---------
+			<%= link_to 'Удалить', petition_path(petition), method: :delete, confirm: "Вы уверены?"%> -----------------
+			<%= link_to 'Редактировать', edit_petition_path(petition) %> ------
+		</li>
+		<% end %>
+	</ul>
+</div>
+
+<div>
+	<%= link_to "Создать петицию", new_petition_path %>
+</div>
