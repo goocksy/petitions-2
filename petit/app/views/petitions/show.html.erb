@@ -6,3 +6,11 @@
 <h3>Информация об авторе</h3>
 ФИО: <b><%= @petition.author_surname %> <%= @petition.author_name %> <%= @petition.author_patronymic %> </b><br>
 Возраст: <b><%= @petition.author_age %></b>
+<hr>
+Количество голосов: <%= @petition.votings.length %><br>
+<% if @petition.votings.length >= @petition.vote_max %>
+	Петиция уже принята
+<% else %>
+	До принятия: <%= @petition.vote_max - @petition.votings.length %> <br>
+<% end %>
+	<%= link_to "Подписать",  new_petition_voting_path(@petition) %>

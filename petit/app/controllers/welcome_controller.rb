@@ -4,8 +4,6 @@ class WelcomeController < ApplicationController
 		@users = User.all
 		@petitions = Petition.all
 	end
-
-
-
+	
 end
 

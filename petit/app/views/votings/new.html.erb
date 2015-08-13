@@ -1,0 +1,44 @@
+<h1> Новый подписчик</h1>
+
+
+<%= form_for @voting, url: petition_votings_path(@petition) do |f| %> 
+	<% unless current_user.present? %>
+	<div>
+		<%= f.label :surname , "Фамилия"%><br>
+		<%= f.text_field :surname%>
+	</div>
+	<div>
+		<%= f.label :name ,"Имя"%> <br>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.label :patronymic, "Отчество" %><br>
+		<%= f.text_field :patronymic %>
+	</div>
+	<div>
+		<%= f.label :age , "Возраст"%><br>
+		<%= f.text_field :age %>
+	</div> 
+	<% else %>
+		<div>
+			<%= f.label :surname , "Фамилия"%><br>
+			<%= f.text_field :surname, value: current_user.surname %>
+		</div>
+		<div>
+			<%= f.label :name ,"Имя"%> <br>
+			<%= f.text_field :name, value: current_user.name %>
+		</div>
+		<div>
+			<%= f.label :patronymic, "Отчество" %><br>
+			<%= f.text_field :patronymic, value: current_user.patronymic  %>
+		</div>
+		<div>
+			<%= f.label :age , "Возраст"%><br>
+			<%= f.text_field :age, value: current_user.age  %>
+		</div> 
+	<% end %>
+ 	<%= f.submit "Поддержать" %>
+
+<% end %>
+
+

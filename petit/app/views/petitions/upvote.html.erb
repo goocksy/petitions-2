@@ -1,0 +1,28 @@
+<h1>Upvote!</h1>
+
+<%= form_for @petition do |petition| %>
+
+	<%= petition.fields_for :votings do |voting| %>
+		<% if voting.object.new_record? %>
+	    <div>
+		    <%= voting.label :surname , "Фамилия"%><br>
+		    <%= voting.text_field :surname %>
+	    </div>
+	  	<div>
+		    <%= voting.label :name ,"Имя"%> <br>
+		    <%= voting.text_field :name %>
+	    </div>
+	    <div>
+		    <%= voting.label :patronymic, "Отчество" %><br>
+		    <%= voting.text_field :patronymic %>
+		  </div>
+		  <div>
+		    <%= voting.label :age , "Возраст"%><br>
+		    <%= voting.text_field :age %>
+	    </div> 
+	    <hr>
+  <% end %>
+
+  <% end %>
+  <%= petition.submit "Поддержать" %>
+<% end %>

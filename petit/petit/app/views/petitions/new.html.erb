@@ -1,0 +1,44 @@
+<h1> Новая петиция</h1>
+
+<%= form_for @petition do |f| %>
+	<div>
+		<%= f.label :title, "Название" %> <br>
+		<%= f.text_field :title %>
+	</div>
+
+	<div>
+		<%= f.label :description, "Текст петиции" %> <br>
+		<%= f.text_field :description %>
+	</div>
+
+	<div>
+		<%= f.label :vote_max, "Количество голосов для принятия петиции" %> <br>
+		<%= f.text_field :vote_max %>
+	</div>
+
+	<% unless current_user.present?  %>
+		<div>
+			<%= f.label :author_surname, "Фамилия" %> <br>
+			<%= f.text_field :author_surname %>
+		</div>
+
+		<div>
+			<%= f.label :author_name, "Имя" %> <br>
+			<%= f.text_field :author_name %>
+		</div>
+
+		<div>
+			<%= f.label :author_patronymic, "Отчество" %> <br>
+			<%= f.text_field :author_patronymic %>
+		</div>
+
+		<div>
+			<%= f.label :author_age, "Возраст" %> <br>
+			<%= f.text_field :author_age %>
+		</div>
+	<% end %>
+	<%= f.submit "Создать петицию" %>
+<% end %>
+
+
+

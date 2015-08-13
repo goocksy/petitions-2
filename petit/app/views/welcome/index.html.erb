@@ -15,26 +15,19 @@
 <% end %>
 </div>
 
-<!--
-<div>
-<ul>
-	<% @users.each do |user| %>
-		<li> <%= user.email %></li>
-	<% end %>
-</ul>
-</div>
--->
+
 
 <div>
-	<ul>
+<table cellspacing="5" cellpadding="10" border="1" width="100%">
 		<% @petitions.each do |petition| %>
-		<li> 
-			<%= link_to petition.title, petition_path(petition) %> ---------
-			<%= link_to 'Удалить', petition_path(petition), method: :delete, confirm: "Вы уверены?"%> -----------------
-			<%= link_to 'Редактировать', edit_petition_path(petition) %> ------
-		</li>
+			<tr>
+				<td><%= link_to petition.title, petition_path(petition) %> </td>
+				<td><%= link_to 'Удалить', petition_path(petition), method: :delete, confirm: "Вы уверены?"%> </td>
+				<td><%= link_to 'Редактировать', edit_petition_path(petition) %> </td>
+				<td><%= petition.votes %></td>
+			</tr>		
 		<% end %>
-	</ul>
+	</table>
 </div>
 
 <div>

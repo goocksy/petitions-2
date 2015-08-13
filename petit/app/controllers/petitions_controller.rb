@@ -16,7 +16,8 @@ class PetitionsController < ApplicationController
   def update
     @petition = Petition.find(params[:id])
     if @petition.update(petition_params)
-      redirect_to root_url
+      redirect_to action: :show 
+      flash[:notice] = "changes made"
     else
       render "edit"
     end
@@ -35,6 +36,7 @@ class PetitionsController < ApplicationController
 
 	def create
 		@petition = Petition.new(petition_params)
+    flash[:notice] = petition_params[votings_attributes: [:name]]
     #В случае если пользователь зарегистрированный
     if current_user.present?
       @petition.author_name = current_user.name
@@ -53,9 +55,7 @@ class PetitionsController < ApplicationController
 private
 
   def petition_params
-  	#стронг параметы (для того чтоб лишнего не отправляли)
-  	params.require(:petition).permit(:title, :description, :vote_max, :author_surname, :author_name, :author_patronymic, :author_age )
+  	params.require(:petition).permit(:title, :description, :vote_max, :author_surname, :author_name, :author_patronymic, :author_age,
+       votings_attributes: [:name, :surname, :patronymic, :age])
   end
-
-
 end

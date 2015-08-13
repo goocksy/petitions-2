@@ -1,19 +1,23 @@
 Petit::Application.routes.draw do
   get "sessions/new"
-  #get "users/new"
   resources :users, only: [:new,:create]
   
-  get '/dashboard', to: 'dashboard#static'
-  get '/about-us', to: 'welcome#about', as: :about
   resources :sessions, only: [:create]
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 
   resources :welcome
-  resources :petitions
+  
+  resources :petitions do
+    resources :votings
+  end
 
   root 'welcome#index'
+
+  #resources :petitions do
+    #get :upvote, on: :member # метод upvote доступен для каждого ресурса в базе данных
+  #end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

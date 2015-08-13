@@ -1,0 +1,21 @@
+<h1>Проголосовавшие за петицию # <%= Petition.find(@votings.last.petition_id).title%> </h1>
+
+<table border = "1">
+<tr>
+	<td> Фамилия </td>
+	<td> Имя </td>
+	<td> Отчество </td>
+	<td> Возраст </td>
+</tr>
+<% @votings.each do |f| %>
+	<tr>
+		<td><%= f.surname %> </td>
+		<td><%= f.name %> </td>
+		<td><%= f.patronymic %> </td>
+		<td><%= f.age %> </td>
+	</tr>
+
+<% end %>
+</table>
+
+<%= link_to "На главную", root_url %>
